@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2024 ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/dts-v1/;
+#include "iris_ce.dtsi"
+
+/{
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+
+        diode-direction = "col2row";
+        col-gpios
+            = <&gpio0 29 GPIO_ACTIVE_HIGH>
+            , <&gpio0 28 GPIO_ACTIVE_HIGH>
+            , <&gpio0  2 GPIO_ACTIVE_HIGH>
+            , <&gpio0 27 GPIO_ACTIVE_HIGH>
+            , <&gpio0 18 GPIO_ACTIVE_HIGH>
+            , <&gpio0  7 GPIO_ACTIVE_HIGH>
+            ;
+
+        row-gpios
+            = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0  3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+};
+
+// rh has col offset of 6
+&default_transform {
+    col-offset = <6>;
+};
+
+// rh has pins inverted
+&pinctrl {
+	pio0_uart0_default: pio0_uart0_default {
+		rx_pins {
+			pinmux = <PIO0_P12>;
+			input-enable;
+			bias-pull-up;
+		};
+		tx_pins {
+			pinmux = <PIO0_P13>;
+		};
+	};
+	
+	pio1_ws2812_default: pio1_ws2812_default {
+		ws2812 {
+			pinmux = <PIO1_P25>;
+		};
+	};
+};

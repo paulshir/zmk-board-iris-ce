@@ -1,0 +1,119 @@
+/*
+ * Copyright (c) 2024 ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/dts-v1/;
+#include <rpi_pico/rp2040.dtsi>
+#include <zephyr/dt-bindings/led/led.h>
+#include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
+
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    model = "Iris CE";
+    compatible = "iris_ce";
+
+    chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,console = &cdc_acm_uart;
+		zephyr,shell-uart = &cdc_acm_uart;
+		zephyr,code-partition = &code_partition;
+        zmk,kscan = &kscan0;
+        zmk,matrix-transform = &default_transform;
+		zmk,split-uart = &pio0_uart0;
+		zmk,underglow = &led_strip;
+    };
+
+	xtal_clk: xtal-clk {
+        compatible = "fixed-clock";
+        clock-frequency = <12000000>;
+        #clock-cells = <0>;
+    };
+
+	default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <16>;
+        rows = <4>;
+        map = <
+RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)                  RC(0,11) RC(0,10) RC(0,9) RC(0,8) RC(0,7) RC(0,6)
+RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)                  RC(1,11) RC(1,10) RC(1,9) RC(1,8) RC(1,7) RC(1,6)
+RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)                  RC(2,11) RC(2,10) RC(2,9) RC(2,8) RC(2,7) RC(2,6)
+RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,11) RC(3,11) RC(3,10) RC(3,9) RC(3,8) RC(3,7) RC(3,6)
+                                RC(4,2) RC(4,3) RC(4,4) RC(4,10) RC(4,9)  RC(4,8)
+        >;
+    };
+
+};
+
+&flash0 {
+    reg = <0x10000000 DT_SIZE_M(2)>;
+
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        /* Reserved memory for the second stage bootloader */
+        second_stage_bootloader: partition@0 {
+            reg = <0x00000000 0x100>;
+            read-only;
+        };
+
+        /*
+         * Usable flash. Starts at 0x100, after the bootloader.
+         */
+        code_partition: partition@100 {
+            reg = <0x100 (DT_SIZE_M(2) - 0x100)>;
+            read-only;
+        };
+    };
+};
+
+&usbd {
+	status = "okay";
+  		cdc_acm_uart: cdc_acm_uart {
+    	compatible = "zephyr,cdc-acm-uart";
+  	};
+};
+
+&gpio0 {
+    status = "okay";
+};
+
+&pio0 {
+	status = "okay";
+
+	pio0_uart0: serial {
+		status = "okay";
+		compatible = "raspberrypi,pico-uart-pio";
+		pinctrl-0 = <&pio0_uart0_default>;
+		pinctrl-names = "default";
+		current-speed = <115200>;
+	};
+};
+
+&pio1 {
+	status = "okay";
+
+	pio1_ws2812: ws2812 {
+		compatible = "worldsemi,ws2812-rpi_pico-pio";
+		status = "okay";
+		pinctrl-0 = <&pio1_ws2812_default>;
+		pinctrl-names = "default";
+		bit-waveform = <3>, <3>, <4>;
+
+		led_strip: led_strip {
+			status = "okay";
+			gpios = <&gpio0 25 GPIO_ACTIVE_HIGH>;
+			chain-length = <34>;
+			color-mapping = <LED_COLOR_ID_GREEN
+					 LED_COLOR_ID_RED
+					 LED_COLOR_ID_BLUE>;
+			reset-delay = <280>;
+			frequency = <800000>;
+		};
+	};
+};

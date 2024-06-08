@@ -1,0 +1,43 @@
+#
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+#
+
+if BOARD_IRIS_CE_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Iris CE Rev. 1"
+
+config USB_DEVICE_VID
+    default 0xCB10
+
+config USB_DEVICE_MANUFACTURER
+    default "Keebio"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif # BOARD_IRIS_CE_LEFT
+
+if BOARD_IRIS_CE_LEFT || BOARD_IRIS_CE_RIGHT
+    
+config BOARD
+    default "iris_ce"
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_SERIAL
+	default y
+
+config SERIAL
+    default y
+
+if ZMK_RGB_UNDERGLOW
+
+config WS2812_STRIP
+    default y
+
+endif # ZMK_RGB_UNDERGLOW
+
+endif # BOARD_IRIS_CE_LEFT || BOARD_IRIS_CE_RIGHT
