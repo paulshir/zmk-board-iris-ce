@@ -16,24 +16,24 @@
     compatible = "iris_ce";
 
     chosen {
-		zephyr,sram = &sram0;
-		zephyr,flash = &flash0;
-		zephyr,console = &cdc_acm_uart;
-		zephyr,shell-uart = &cdc_acm_uart;
-		zephyr,code-partition = &code_partition;
+        zephyr,sram = &sram0;
+        zephyr,flash = &flash0;
+        zephyr,console = &cdc_acm_uart;
+        zephyr,shell-uart = &cdc_acm_uart;
+        zephyr,code-partition = &code_partition;
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
-		zmk,split-uart = &pio0_uart0;
-		zmk,underglow = &led_strip;
+        zmk,split-uart = &pio0_uart0;
+        zmk,underglow = &led_strip;
     };
 
-	xtal_clk: xtal-clk {
+    xtal_clk: xtal-clk {
         compatible = "fixed-clock";
         clock-frequency = <12000000>;
         #clock-cells = <0>;
     };
 
-	default_transform: keymap_transform_0 {
+    default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <16>;
         rows = <4>;
@@ -73,10 +73,10 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,11) RC(3,11) RC(3,1
 };
 
 &usbd {
-	status = "okay";
-  		cdc_acm_uart: cdc_acm_uart {
-    	compatible = "zephyr,cdc-acm-uart";
-  	};
+    status = "okay";
+        cdc_acm_uart: cdc_acm_uart {
+        compatible = "zephyr,cdc-acm-uart";
+    };
 };
 
 &gpio0 {
@@ -84,36 +84,36 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,11) RC(3,11) RC(3,1
 };
 
 &pio0 {
-	status = "okay";
+    status = "okay";
 
-	pio0_uart0: serial {
-		status = "okay";
-		compatible = "raspberrypi,pico-uart-pio";
-		pinctrl-0 = <&pio0_uart0_default>;
-		pinctrl-names = "default";
-		current-speed = <115200>;
-	};
+    pio0_uart0: serial {
+        status = "okay";
+        compatible = "raspberrypi,pico-uart-pio";
+        pinctrl-0 = <&pio0_uart0_default>;
+        pinctrl-names = "default";
+        current-speed = <115200>;
+    };
 };
 
 &pio1 {
-	status = "okay";
+    status = "okay";
 
-	pio1_ws2812: ws2812 {
-		compatible = "worldsemi,ws2812-rpi_pico-pio";
-		status = "okay";
-		pinctrl-0 = <&pio1_ws2812_default>;
-		pinctrl-names = "default";
-		bit-waveform = <3>, <3>, <4>;
+    pio1_ws2812: ws2812 {
+        compatible = "worldsemi,ws2812-rpi_pico-pio";
+        status = "okay";
+        pinctrl-0 = <&pio1_ws2812_default>;
+        pinctrl-names = "default";
+        bit-waveform = <3>, <3>, <4>;
 
-		led_strip: led_strip {
-			status = "okay";
-			gpios = <&gpio0 25 GPIO_ACTIVE_HIGH>;
-			chain-length = <34>;
-			color-mapping = <LED_COLOR_ID_GREEN
-					 LED_COLOR_ID_RED
-					 LED_COLOR_ID_BLUE>;
-			reset-delay = <280>;
-			frequency = <800000>;
-		};
-	};
+        led_strip: led_strip {
+            status = "okay";
+            gpios = <&gpio0 25 GPIO_ACTIVE_HIGH>;
+            chain-length = <34>;
+            color-mapping = <LED_COLOR_ID_GREEN
+                     LED_COLOR_ID_RED
+                     LED_COLOR_ID_BLUE>;
+            reset-delay = <280>;
+            frequency = <800000>;
+        };
+    };
 };

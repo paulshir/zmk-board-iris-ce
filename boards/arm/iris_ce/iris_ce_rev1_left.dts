@@ -33,20 +33,20 @@
 };
 
 &pinctrl {
-	pio0_uart0_default: pio0_uart0_default {
-		rx_pins {
-			pinmux = <PIO0_P13>;
-			input-enable;
-			bias-pull-up;
-		};
-		tx_pins {
-			pinmux = <PIO0_P12>;
-		};
-	};
-	
-	pio1_ws2812_default: pio1_ws2812_default {
-		ws2812 {
-			pinmux = <PIO1_P25>;
-		};
-	};
+    pio0_uart0_default: pio0_uart0_default {
+        rx_pins {
+            pinmux = <PIO0_P13>;
+            input-enable;
+            bias-pull-up;
+        };
+        tx_pins {
+            pinmux = <PIO0_P12>;
+        };
+    };
+    
+    pio1_ws2812_default: pio1_ws2812_default {
+        ws2812 {
+            pinmux = <PIO1_P25>;
+        };
+    };
 };
