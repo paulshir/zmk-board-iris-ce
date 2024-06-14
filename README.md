@@ -65,7 +65,3 @@ manifest:
   self:
     path: config
 ```
-
-## Remaining Items
-- [ ] Create writable storage area
-
