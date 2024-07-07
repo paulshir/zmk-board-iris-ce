@@ -16,6 +16,11 @@ LEDs are supported but they do not synchronise between halfs. Additionally, as t
 communication in one direction, changing RGB settings will only update the central (left) half of the keyboard.
 If you want to use LED's it is best to set the desired settings in `iris_ce.conf` in your `zmk-config`.
 
+
+### Settings
+To allow storing settings in flash enabled `CONFIG_SETTINGS=y`. The board definition is configured for storing settings but
+it is disabled by default.
+
 ## Building
 ### Locally
 Currently you will need to run patched versions of [ZMK + Zephyr](https://github.com/paulshir/zmk/tree/split-serial-pr%2Bpio-led).
