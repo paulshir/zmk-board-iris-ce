@@ -37,8 +37,28 @@
 &kp F12          &kp F1      &kp F2      &kp F3        &kp F4         &kp F5                           &kp F6     &kp F7    &kp F8           &kp F9           &kp F10          &kp F11
 &rgb_ug RGB_TOG  &kp EXCL    &kp AT      &kp HASH      &kp DOLLAR     &kp PERCENT                      &kp CARET  &kp AMPS  &kp ASTRK        &kp LPAR         &kp RPAR         &bootloader
 &rgb_ug RGB_EFF  &kp C_PREV  &kp C_NEXT  &kp C_VOL_UP  &kp PAGE_UP    &kp UNDER                        &kp EQUAL  &kp HOME  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &kp BSLH
-&kp C_MUTE       &kp C_STOP  &kp C_PLAY  &kp C_VOL_DN  &kp PAGE_DOWN  &kp MINUS    &kp LPAR  &kp RPAR  &kp PLUS   &kp END   &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &sys_reset
+&kp C_MUTE       &kp C_STOP  &kp C_PLAY  &kp C_VOL_DN  &kp PAGE_DOWN  &kp MINUS    &kp LPAR  &kp RPAR  &kp PLUS   &kp END   &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &studio_unlock
                                                        &trans         &trans       &trans    &trans    &trans     &trans
+            >;
+        };
+
+        studio_extra_1 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        studio_extra_2 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };

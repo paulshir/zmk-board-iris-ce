@@ -16,7 +16,6 @@ LEDs are supported but they do not synchronise between halfs. Additionally, as t
 communication in one direction, changing RGB settings will only update the central (left) half of the keyboard.
 If you want to use LED's it is best to set the desired settings in `iris_ce.conf` in your `zmk-config`.
 
-
 ### Settings
 To allow storing settings in flash enabled `CONFIG_SETTINGS=y`. The board definition is configured for storing settings but
 it is disabled by default.
@@ -70,3 +69,14 @@ manifest:
   self:
     path: config
 ```
+
+## ZMK Studio
+This board definition has support for ZMK Studio. See https://zmk.dev/docs/features/studio for building with ZMK Studio enabled.
+When connecting to ZMK studio, you need to press a key bound to `@studio_unlock`. On the default keymap this has been added and is 
+accessed via the right shift button on the raise layer. This is located at the `CLEAR MEM` button shown on the Raise layer in 
+the [Keeb.io default Iris keymap](https://docs.keeb.io/assets/files/Iris%20Default%20Keymap-6d56a01516f12c3cc9727515d32d49a2.pdf).
+
+ZMK Studio requires the number of layers to be defined in the code. Two extra empty layers have been added to the default keymap 
+so it has a total of 5 layers to work with.
+
+I will look at having auto builds with ZMK Studio enabled shortly.
