@@ -6,15 +6,13 @@
 This is not associated with or supported by Keebio. Using this may affect your warranty.
 
 ## ZMK/Zephyr Patchs
-ZMK currently doesn't support split wired keyboards. The [wired split over serial support PR](https://github.com/zmkfirmware/zmk/pull/2080) is required to build this.
+ZMK currently doesn't support split wired keyboards. The [Full-Duplex Wired Split PR](https://github.com/zmkfirmware/zmk/pull/2766) is required to build this.
 
 ZMK currently does not support WS2812 for RP2040 boards. Support has been added upstream in Zephyr 3.6, so these changes need to be backported to the ZMK tracked version..
 Commits [6699d4d4f931f5f686bae65da5f89589395d86ba](https://github.com/zephyrproject-rtos/zephyr/commit/6699d4d4f931f5f686bae65da5f89589395d86ba) and [0f458c9564d76e9e077230dc321cbddb1e801cc9](https://github.com/zephyrproject-rtos/zephyr/commit/0f458c9564d76e9e077230dc321cbddb1e801cc9) are required.
 
 ## Feature Support
-LEDs are supported but they do not synchronise between halfs. Additionally, as the `split-serial-pr` currently only supports
-communication in one direction, changing RGB settings will only update the central (left) half of the keyboard.
-If you want to use LED's it is best to set the desired settings in `iris_ce.conf` in your `zmk-config`.
+LEDs are supported but they do not synchronise between halfs. 
 
 ### Settings
 To allow storing settings in flash enabled `CONFIG_SETTINGS=y`. The board definition is configured for storing settings but
@@ -61,7 +59,7 @@ manifest:
     #   import: app/west.yml
     - name: zmk
       remote: paulshir
-      revision: split-serial-pr+pio-led
+      revision: pr2766+pio-led
       import: app/west.yml
     - name: zmk-board-iris-ce
       remote: paulshir

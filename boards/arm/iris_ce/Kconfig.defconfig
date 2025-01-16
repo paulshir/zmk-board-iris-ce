@@ -21,9 +21,6 @@ config BOARD
 config ZMK_SPLIT
     default y
 
-config ZMK_SPLIT_SERIAL
-	default y
-
 config SERIAL
     default y
 
