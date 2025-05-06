@@ -71,8 +71,6 @@ the [Keeb.io default Iris keymap](https://docs.keeb.io/assets/files/Iris%20Defau
 ZMK Studio requires the number of layers to be defined in the code. Two extra empty layers have been added to the default keymap 
 so it has a total of 5 layers to work with.
 
-I will look at having auto builds with ZMK Studio enabled shortly.
-
 To build for studio, your `build.yaml` needs to be updated [as documented here](https://zmk.dev/docs/features/studio). For
 example, add the following definition
 
@@ -82,3 +80,6 @@ example, add the following definition
     cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: iris_ce_rev1_left_studio
 ```
+
+There are build artifacts with studio support [autobuilt here](https://github.com/paulshir/zmk-board-iris-ce/actions/workflows/build.yml?query=is%3Acompleted+branch%3Amain)
+
