@@ -1,0 +1,21 @@
+boards:
+- name: iris_ce_left
+  vendor: keebio
+  revision:
+    format: major.minor.patch
+    default: 1.0.0
+    exact: true
+    revisions:
+    - name: 1.0.0
+  socs:
+  - name: rp2040
+- name: iris_ce_right
+  vendor: keebio
+  revision:
+    format: major.minor.patch
+    default: 1.0.0
+    exact: true
+    revisions:
+    - name: 1.0.0
+  socs:
+  - name: rp2040

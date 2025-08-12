@@ -16,31 +16,37 @@
         col-gpios
             = <&gpio0 29 GPIO_ACTIVE_HIGH>
             , <&gpio0 28 GPIO_ACTIVE_HIGH>
-            , <&gpio0 27 GPIO_ACTIVE_HIGH>
             , <&gpio0  2 GPIO_ACTIVE_HIGH>
-            , <&gpio0  3 GPIO_ACTIVE_HIGH>
-            , <&gpio0 14 GPIO_ACTIVE_HIGH>
+            , <&gpio0 27 GPIO_ACTIVE_HIGH>
+            , <&gpio0 18 GPIO_ACTIVE_HIGH>
+            , <&gpio0  7 GPIO_ACTIVE_HIGH>
             ;
 
         row-gpios
-            = <&gpio0 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0  7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0  3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 };
 
+// rh has col offset of 6
+&default_transform {
+    col-offset = <6>;
+};
+
+// rh has pins inverted
 &pinctrl {
     pio0_uart0_default: pio0_uart0_default {
         rx_pins {
-            pinmux = <PIO0_P13>;
+            pinmux = <PIO0_P12>;
             input-enable;
             bias-pull-up;
         };
         tx_pins {
-            pinmux = <PIO0_P12>;
+            pinmux = <PIO0_P13>;
         };
     };
     
@@ -49,4 +55,8 @@
             pinmux = <PIO1_P25>;
         };
     };
+
+    clocks_default: clocks_default {
+	};
+
 };

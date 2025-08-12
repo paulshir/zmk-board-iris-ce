@@ -3,8 +3,7 @@
 # SPDX-License-Identifier: MIT
 #
 
-config BOARD_IRIS_CE_LEFT
-    bool
-
 config BOARD_IRIS_CE_RIGHT
-    bool
+    select SOC_RP2040 
+    select RP2_FLASH_W25Q080
+

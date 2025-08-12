@@ -1,6 +1,6 @@
 file_format: "1"
-id: iris_ce_rev1
-name: Iris CE Rev1
+id: iris_ce
+name: Iris CE
 url: https://keeb.io/products/iris-ce-keyboard
 type: board
 arch: arm
@@ -11,5 +11,8 @@ features:
 outputs:
   - usb
 siblings:
-  - iris_ce_rev1_left
-  - iris_ce_rev1_right
+  - iris_ce_left
+  - iris_ce_right
+revisions:
+  - "1.0.0"
+default_revision: "1.0.0"

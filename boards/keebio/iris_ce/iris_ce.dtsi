@@ -5,7 +5,7 @@
  */
 
 /dts-v1/;
-#include <rpi_pico/rp2040.dtsi>
+#include <raspberrypi/rpi_pico/rp2040.dtsi>
 #include <zephyr/dt-bindings/led/led.h>
 #include <zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 
@@ -124,4 +124,9 @@ zephyr_udc0: &usbd {
 
 &default_layout {
     transform = <&default_transform>;
+};
+
+&clocks {
+	pinctrl-0 = <&clocks_default>;
+	pinctrl-names = "default";
 };

@@ -9,7 +9,11 @@ toolchain:
   - gnuarmemb
   - xtools
 supported:
+  - uart
   - gpio
   - usb_device
   - hwinfo
   - pwm
+  - flash
+  - counter
+  - clock
